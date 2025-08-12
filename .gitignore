@@ -1,0 +1,12 @@
+venv/
+env/
+.venv/
+__pycache__/
+*.pyc
+
+# Python bytecode and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
