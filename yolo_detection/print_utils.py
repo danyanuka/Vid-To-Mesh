@@ -10,9 +10,10 @@ def print_and_view_detections(detected_objects, screen_width=1280, screen_height
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(window_name, screen_width, screen_height)
         cv2.imshow(window_name, obj.masked_image)
-
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+
 
 def show_frames_in_loop(result, screen_width=1280, screen_height=720):
     frame_ = result.plot()
