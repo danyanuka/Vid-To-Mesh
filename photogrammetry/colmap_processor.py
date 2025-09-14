@@ -11,7 +11,6 @@ class ColmapProcessor:
         self.images_path = self.project_path / "images"
         self.sparse_path = self.project_path / "sparse"
         
-        # Create directories if they don't exist
         self.images_path.mkdir(parents=True, exist_ok=True)
         self.sparse_path.mkdir(parents=True, exist_ok=True)
     
@@ -57,7 +56,6 @@ class ColmapProcessor:
     
     def extract_features(self):
         """
-        Run COLMAP feature extraction on images.
         Creates database.db with extracted features.
         """
         print("Extracting features...")
@@ -90,7 +88,7 @@ class ColmapProcessor:
         ]
         
         try:
-            result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+            result = subprocess.run(cmd, check=True, text=True)
             print("Feature matching completed successfully")
             return True
         except subprocess.CalledProcessError as e:
@@ -98,9 +96,8 @@ class ColmapProcessor:
             print(f"Error output: {e.stderr}")
             return False
     
-    def create_sparse_reconstruction(self):
+    def sparse_reconstruct(self):
         """
-        Run COLMAP mapper to create sparse 3D reconstruction.
         Creates sparse/ folder with cameras.bin, images.bin, points3D.bin
         """
         print("Creating sparse reconstruction...")
@@ -120,22 +117,14 @@ class ColmapProcessor:
             print(f"Sparse reconstruction failed: {e}")
             print(f"Error output: {e.stderr}")
             return False
+
     
     def get_sparse_path(self):
-        """
-        Get the path to the sparse reconstruction folder.
-        
-        Returns:
-            Path: Path to sparse/ folder containing reconstruction files
-        """
         return self.sparse_path
     
     def check_colmap_available(self):
         """
         Check if COLMAP is available in the system PATH.
-        
-        Returns:
-            bool: True if COLMAP is available, False otherwise
         """
         try:
             subprocess.run(["colmap", "--help"], check=True, capture_output=True)
