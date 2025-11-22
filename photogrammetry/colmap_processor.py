@@ -85,7 +85,7 @@ class ColmapProcessor:
         cmd = [
             "colmap", "image_undistorter",
             "--image_path", str(self.images_path),
-            "--input_path", str(self.sparse_path / "0"),
+            "--input_path", str(self.sparse_path / "1"),
             "--output_path", str(self.dense_path),
             "--output_type", "COLMAP",
             "--max_image_size", str(max_image_size)

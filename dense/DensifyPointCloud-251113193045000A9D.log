@@ -1,0 +1,20 @@
+19:30:45 [App     ] OpenMVS x64 v2.3.0
+19:30:45 [App     ] Build date: Jan  7 2024, 05:18:42
+19:30:45 [App     ] CPU: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz (8 cores)
+19:30:45 [App     ] RAM: 7.75GB Physical Memory 128.00TB Virtual Memory
+19:30:45 [App     ] OS: Windows 8 x64
+19:30:45 [App     ] Disk: 161.14GB (475.74GB) space
+19:30:45 [App     ] SSE & AVX compatible CPU & OS detected
+19:30:45 [App     ] Command line: DensifyPointCloud -i dense/model.mvs -w dense/
+19:30:46 [App     ] CUDA device 0 initialized: NVIDIA GeForce MX350 (compute capability 6.1; memory 2.00GB)
+19:30:46 [App     ] MEMORYINFO: {
+19:30:46 [App     ] 	PageFaultCount 22483
+19:30:46 [App     ] 	PeakWorkingSetSize 85.82MB
+19:30:46 [App     ] 	WorkingSetSize 85.82MB
+19:30:46 [App     ] 	QuotaPeakPagedPoolUsage 366.16KB
+19:30:46 [App     ] 	QuotaPagedPoolUsage 366.16KB
+19:30:46 [App     ] 	QuotaPeakNonPagedPoolUsage 24.82KB
+19:30:46 [App     ] 	QuotaNonPagedPoolUsage 24.82KB
+19:30:46 [App     ] 	PagefileUsage 131.85MB
+19:30:46 [App     ] 	PeakPagefileUsage 133.25MB
+19:30:46 [App     ] } ENDINFO
