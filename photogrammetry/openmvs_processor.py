@@ -14,16 +14,16 @@ class OpenMVSProcessor:
 
         cmd = [
             "InterfaceCOLMAP",
-            "-w", str(self.dense_path),
-            "-i", str(self.dense_path),
-            "-o", str(self.mvs_file_path),
-            "--image-folder", str(self.undistorted_imgs_folder)
+            "-i", ".",  # Current directory (dense folder), InterfaceCOLMAP finds sparse/ inside
+            "-o", "scene.mvs",  # Relative to dense folder
+            "--image-folder", str(self.undistorted_imgs_folder.resolve())  # Absolute path so .mvs file stores absolute paths
         ]
 
-        print(f"Command: {' '.join(cmd)}") 
+        print(f"Command: {' '.join(cmd)}")
 
         try:
-            subprocess.run(cmd, check=True, capture_output=True, text=True)
+            # Run from dense folder, matching manual execution
+            subprocess.run(cmd, check=True, capture_output=True, text=True, cwd=str(self.dense_path))
             print(f"InterfaceCOLMAP completed successfully")
             return True
         except subprocess.CalledProcessError as e:
@@ -36,13 +36,14 @@ class OpenMVSProcessor:
 
         cmd = [
             "DensifyPointCloud",
-            "-i", str(self.mvs_file_path),
-            "-w", str(self.dense_path),
+            "-i", "scene.mvs",  # Relative to dense folder
+            "-w", ".",  # Current directory (dense folder)
             "-v", str(3)
         ]
 
         try:
-            subprocess.run(cmd, check=True, capture_output=True, text=True)
+            # Run from dense folder, matching manual execution
+            subprocess.run(cmd, check=True, text=True, cwd=str(self.dense_path))
             print(f"DensifyPointCloud completed successfully")
             return True
         except subprocess.CalledProcessError as e:
